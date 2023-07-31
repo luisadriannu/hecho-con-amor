@@ -1,0 +1,55 @@
+/* ***** MENU ***** */
+.menu.toggle-menu {
+  transform: translate(0, 0);
+}
+
+.modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ***** CARRUSEL ***** */
+.swiper {
+  width: 100%;
+  height: 100vh;
+}
+
+.swiper-slide {
+  position: relative;
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.swiper {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.swiper-pagination-bullet-active {
+  background: #fff !important;
+}
+
+/* ***** FOOTER ***** */
+.bg-color-footer {
+  background-color: #f4f4f4;
+  padding: 60px 0;
+}
+
+/* ***** Error404 ***** */
+.bi-box2-heart-fill {
+  font-size: 4.5rem;
+}
