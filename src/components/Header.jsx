@@ -83,7 +83,15 @@ const Header = () => {
           {listBirthday ? (
             <ContentListBirthday>
               <ul>
-                <li> Intantil</li>
+                <NavLink
+                  to="/fiesta-infantil"
+                  onClick={() => {
+                    toggleMenu();
+                    scrollTop();
+                  }}
+                >
+                  Intantil
+                </NavLink>
                 <li> Adulto</li>
               </ul>
             </ContentListBirthday>
@@ -95,7 +103,7 @@ const Header = () => {
             <ContentListBirthday>
               <ul>
                 <li> Set de fotos</li>
-                <li> Adulto</li>
+                <li> Graduaciones</li>
               </ul>
             </ContentListBirthday>
           ) : null}
@@ -105,7 +113,8 @@ const Header = () => {
           {listRomantic ? (
             <ContentListBirthday>
               <ul>
-                <li> Cenas románticas</li>
+                <li>Cenas románticas</li>
+                <li>Bodas</li>
               </ul>
             </ContentListBirthday>
           ) : null}

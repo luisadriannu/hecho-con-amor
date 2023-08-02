@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import ContentCategories from "./components/ContentCategories";
 import Error404 from "./components/Error404";
 import Contacto from "./pages/Contacto";
+import BirthdayChildren from "./pages/BirthdayChildren";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/categoria" element={<ContentCategories />} />
+          <Route path="/fiesta-infantil" element={<BirthdayChildren />} />
           <Route path="/contacto" element={<Contacto />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
