@@ -11,7 +11,7 @@ const Carrusel = () => {
   return (
     <Swiper
       slidesPerView={1}
-      spaceBetween={15}
+      spaceBetween={5}
       loop={true}
       pagination={{
         clickable: true,

@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { styled } from "styled-components";
 import { GetImageUrl } from "../helpers/GetImageUrl";
 import "./Styles.css";
@@ -10,6 +10,7 @@ const Header = () => {
   const [listRomantic, setlistRomantic] = useState(false);
   const [listBabys, setlistBabys] = useState(false);
   const [listArrangements, setlistArrangements] = useState(false);
+  const [desktop, setDesktop] = useState(false);
 
   const menu = useRef();
   const modal = useRef();
@@ -19,30 +20,63 @@ const Header = () => {
   const babys = useRef();
   const arrangement = useRef();
 
+  useEffect(() => {
+    let breakpoint = window.matchMedia("(min-width: 1024px)");
+
+    const responsive = (e) => {
+      if (e.matches) {
+        setlistBirthday(true);
+        setlistPhotos(true);
+        setlistRomantic(true);
+        setlistBabys(true);
+        setlistArrangements(true);
+        setDesktop(true);
+      } else {
+        setlistBirthday(false);
+        setlistPhotos(false);
+        setlistRomantic(false);
+        setlistBabys(false);
+        setlistArrangements(false);
+        setDesktop(false);
+      }
+    };
+
+    breakpoint.addEventListener("change", responsive);
+    responsive(breakpoint);
+
+    return () => {
+      window.removeEventListener("change", responsive);
+    };
+  }, []);
+
   const toggleMenu = () => {
     menu.current.classList.toggle("toggle-menu");
     modal.current.classList.toggle("active");
   };
 
   const extendMenu = (e) => {
-    if (e.target === birthdays.current) {
-      setlistBirthday(!listBirthday);
-    }
+    if (!desktop) {
+      if (e.target === birthdays.current) {
+        setlistBirthday(!listBirthday);
+      }
 
-    if (e.target === photos.current) {
-      setlistPhotos(!listPhotos);
-    }
+      if (e.target === photos.current) {
+        setlistPhotos(!listPhotos);
+      }
 
-    if (e.target === romantic.current) {
-      setlistRomantic(!listRomantic);
-    }
+      if (e.target === romantic.current) {
+        setlistRomantic(!listRomantic);
+      }
 
-    if (e.target === babys.current) {
-      setlistBabys(!listBabys);
-    }
+      if (e.target === babys.current) {
+        setlistBabys(!listBabys);
+      }
 
-    if (e.target === arrangement.current) {
-      setlistArrangements(!listArrangements);
+      if (e.target === arrangement.current) {
+        setlistArrangements(!listArrangements);
+      }
+    } else {
+      return;
     }
   };
 
@@ -77,12 +111,10 @@ const Header = () => {
           >
             Inicio
           </NavLink>
-          <a onClick={extendMenu} ref={birthdays}>
+          <LinkMenu onClick={extendMenu} ref={birthdays}>
             Cumpleaños <i className="bi bi-caret-down-fill"></i>
-          </a>
-          {listBirthday ? (
-            <ContentListBirthday>
-              <ul>
+            {listBirthday ? (
+              <ContentListBirthday>
                 <NavLink
                   to="/fiesta-infantil"
                   onClick={() => {
@@ -90,55 +122,125 @@ const Header = () => {
                     scrollTop();
                   }}
                 >
-                  Intantil
+                  ● Intantil
                 </NavLink>
-                <li> Adulto</li>
-              </ul>
-            </ContentListBirthday>
-          ) : null}
-          <a onClick={extendMenu} ref={photos}>
+                <br />
+                <NavLink
+                  to="/fiesta-adulto"
+                  onClick={() => {
+                    toggleMenu();
+                    scrollTop();
+                  }}
+                >
+                  ● Adulto
+                </NavLink>
+              </ContentListBirthday>
+            ) : null}
+          </LinkMenu>
+          <LinkMenu onClick={extendMenu} ref={photos}>
             Fotos <i className="bi bi-caret-down-fill"></i>
-          </a>
-          {listPhotos ? (
-            <ContentListBirthday>
-              <ul>
-                <li> Set de fotos</li>
-                <li> Graduaciones</li>
-              </ul>
-            </ContentListBirthday>
-          ) : null}
-          <a onClick={extendMenu} ref={romantic}>
+            {listPhotos ? (
+              <ContentListBirthday>
+                <NavLink
+                  to="/set-para-fotos"
+                  onClick={() => {
+                    toggleMenu();
+                    scrollTop();
+                  }}
+                >
+                  ● Set de fotos
+                </NavLink>
+                <br />
+                <NavLink
+                  to="/graduaciones"
+                  onClick={() => {
+                    toggleMenu();
+                    scrollTop();
+                  }}
+                >
+                  ● Graduaciones
+                </NavLink>
+              </ContentListBirthday>
+            ) : null}
+          </LinkMenu>
+          <LinkMenu onClick={extendMenu} ref={romantic}>
             Romántico <i className="bi bi-caret-down-fill"></i>
-          </a>
-          {listRomantic ? (
-            <ContentListBirthday>
-              <ul>
-                <li>Cenas románticas</li>
-                <li>Bodas</li>
-              </ul>
-            </ContentListBirthday>
-          ) : null}
-          <a onClick={extendMenu} ref={babys}>
+            {listRomantic ? (
+              <ContentListBirthday>
+                <NavLink
+                  to="/cenas-romanticas"
+                  onClick={() => {
+                    toggleMenu();
+                    scrollTop();
+                  }}
+                >
+                  ● Cenas románticas
+                </NavLink>
+                <br />
+                <NavLink
+                  to="/bodas"
+                  onClick={() => {
+                    toggleMenu();
+                    scrollTop();
+                  }}
+                >
+                  ● Bodas
+                </NavLink>
+              </ContentListBirthday>
+            ) : null}
+          </LinkMenu>
+          <LinkMenu onClick={extendMenu} ref={babys}>
             Bebés <i className="bi bi-caret-down-fill"></i>
-          </a>
-          {listBabys ? (
-            <ContentListBirthday>
-              <ul>
-                <li>Baby showers</li>
-              </ul>
-            </ContentListBirthday>
-          ) : null}
-          <a onClick={extendMenu} ref={arrangement}>
+            {listBabys ? (
+              <ContentListBirthday>
+                <NavLink
+                  to="/baby-showers"
+                  onClick={() => {
+                    toggleMenu();
+                    scrollTop();
+                  }}
+                >
+                  ● Baby showers
+                </NavLink>
+                <br />
+                <NavLink
+                  to="/bautizmo"
+                  onClick={() => {
+                    toggleMenu();
+                    scrollTop();
+                  }}
+                >
+                  ● Bautizos
+                </NavLink>
+              </ContentListBirthday>
+            ) : null}
+          </LinkMenu>
+          <LinkMenu onClick={extendMenu} ref={arrangement}>
             Arreglos <i className="bi bi-caret-down-fill"></i>
-          </a>
-          {listArrangements ? (
-            <ContentListBirthday>
-              <ul>
-                <li>Centros de mesa</li>
-                <li>Mesas de dulces</li>
-              </ul>
-            </ContentListBirthday>
-          ) : null}
+            {listArrangements ? (
+              <ContentListBirthday>
+                <NavLink
+                  to="/centros-de-mesa"
+                  onClick={() => {
+                    toggleMenu();
+                    scrollTop();
+                  }}
+                >
+                  ● Centros de mesa
+                </NavLink>
+                <br />
+                <NavLink
+                  to="/mesas-de-dulces"
+                  onClick={() => {
+                    toggleMenu();
+                    scrollTop();
+                  }}
+                >
+                  ● Mesas de dulces
+                </NavLink>
+              </ContentListBirthday>
+            ) : null}
+          </LinkMenu>
           <NavLink
             to="/contacto"
             onClick={() => {
@@ -183,7 +285,7 @@ const HeaderMenu = styled.article`
   }
 
   @media screen and (min-width: 1024px) {
-    position: static;
+    position: relative;
     /* flex-direction: row-reverse; */
     button {
       display: none;
@@ -239,6 +341,19 @@ const Menu = styled.article`
   }
 `;
 
+const LinkMenu = styled.div`
+  cursor: pointer;
+  &:hover {
+    div {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+  }
+`;
+
 const Modal = styled.article`
   background-color: rgba(34, 34, 34, 0.55);
   position: fixed;
@@ -251,6 +366,10 @@ const Modal = styled.article`
   transition: opacity 0.3s ease;
   opacity: 0;
   pointer-events: none;
+
+  @media screen and (min-width: 1024px) {
+    display: none;
+  }
 `;
 
 const Logo = styled.div`
@@ -264,9 +383,17 @@ const Logo = styled.div`
 `;
 
 const ContentListBirthday = styled.div`
-  ul {
-    margin: 0;
-    font-weight: normal;
+  background-color: #fff;
+  font-weight: normal;
+  padding: 0.5rem 0 0.5rem 1.75rem;
+
+  @media screen and (min-width: 1024px) {
+    padding: 0.75rem;
+    position: absolute;
+    transition: opacity 0.3s ease-in;
+    opacity: 0;
+    border-radius: 0.25rem;
+    pointer-events: none;
   }
 `;
 

@@ -92,23 +92,23 @@ const LastestNews = () => {
         </ContentCards>
 
         <Modal className="modal" ref={modal}>
-          <ModalContent className="container section">
+          <ModalContent>
             <button onClick={toggleModalInfo}>
               <i className="bi bi-x-lg"></i>
             </button>
-            <div>
-              <img src={imgSrc} alt="Imagen" />
-            </div>
-            <ContentDescription>
-              <h4>{titleCard}</h4>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio,
-                sit accusamus adipisci nobis temporibus, ab ut accusantium cum
-                dignissimos minima sint qui magni rem corrupti! Animi temporibus
-                perferendis error quae.
-                {descriptionCard}
-              </p>
-            </ContentDescription>
+            <ContentFlexCard>
+              <ImageModal $backgroundImage={imgSrc} alt="Imagen" />
+              <div>
+                <h4>{titleCard}</h4>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Odio, sit accusamus adipisci nobis temporibus, ab ut
+                  accusantium cum dignissimos minima sint qui magni rem
+                  corrupti! Animi temporibus perferendis error quae.
+                  {descriptionCard}
+                </p>
+              </div>
+            </ContentFlexCard>
           </ModalContent>
         </Modal>
       </article>
@@ -118,7 +118,7 @@ const LastestNews = () => {
 
 const ContentCards = styled.article`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(279px, 1fr));
   gap: 1rem;
 `;
 
@@ -156,6 +156,7 @@ const Modal = styled.div`
   right: 0;
   width: 100%;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   transition: opacity 0.3s ease;
@@ -165,7 +166,7 @@ const Modal = styled.div`
 
 const ModalContent = styled.div`
   background-color: #fff;
-  width: 80%;
+  width: 90%;
   border-radius: 0.75rem;
   position: relative;
 
@@ -176,22 +177,15 @@ const ModalContent = styled.div`
     width: 2.5rem;
     height: 2.5rem;
     cursor: pointer;
-    background-color: #e5cccc;
+    background-color: #fff;
     border: none;
     border-radius: 100%;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.37);
 
     i {
       color: #bb1616;
-      font-size: 1.2rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      font-size: 1.5rem;
     }
-  }
-
-  img {
-    border-radius: 0.75rem;
-    margin: 1rem 0;
   }
 
   h4,
@@ -200,13 +194,31 @@ const ModalContent = styled.div`
   }
 
   @media screen and (min-width: 1024px) {
-    display: flex;
-    gap: 0.75rem;
+    max-width: 800px;
   }
 `;
 
-const ContentDescription = styled.div`
-  /* padding: 0.25rem; */
+const ImageModal = styled.div`
+  background-image: url(${(props) => props.$backgroundImage});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 0.25rem;
+  height: 368px;
+  width: 100%;
+`;
+
+const ContentFlexCard = styled.div`
+  padding: 1rem;
+
+  @media screen and (min-width: 1024px) {
+    display: flex;
+    gap: 1rem;
+
+    div {
+      width: 90%;
+    }
+  }
 `;
 
 export {
@@ -216,5 +228,6 @@ export {
   TextContentImage,
   Modal,
   ModalContent,
-  ContentDescription,
+  ContentFlexCard,
+  ImageModal,
 };

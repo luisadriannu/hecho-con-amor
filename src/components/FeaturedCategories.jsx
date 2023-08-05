@@ -101,7 +101,7 @@ const FeaturedCategories = () => {
 const ContentGrid = styled.div`
   display: grid;
   /* grid-template-columns: repeat(1, minmax(300px, 1fr)); */
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(279px, 1fr));
   gap: 0.75rem;
 
   @media screen and (min-width: 768px) {
@@ -197,7 +197,7 @@ const TextContentImage = styled.div`
   top: 1rem;
   left: 1rem;
   color: #fff;
-  text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.44);
+  /* text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.44); */
   border-radius: 0.25rem;
   max-width: 80%;
   pointer-events: none;

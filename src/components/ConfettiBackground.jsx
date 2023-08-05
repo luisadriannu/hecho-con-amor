@@ -18,6 +18,7 @@ const Background = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  /* padding: 4rem 0; */
 `;
 
 const Conffeti = styled.section`
@@ -25,9 +26,11 @@ const Conffeti = styled.section`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
+  height: 100%;
 
   img {
-    max-width: 100%;
+    width: 80%;
   }
 `;
 export default ConffetiBackground;

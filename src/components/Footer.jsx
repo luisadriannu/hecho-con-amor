@@ -1,25 +1,35 @@
 import { styled } from "styled-components";
 import payments from "../assets/payments.png";
+import { NavLink } from "react-router-dom";
 
 const Footer = () => {
+  const scrollTop = () => {
+    window.scrollTo({
+      top: 0,
+    });
+  };
+
   return (
     <footer className="bg-color-footer">
       <article className="container section">
         <Info>
           <BoxFooter>
             <h5>Sobre nosotros</h5>
-
-            <a href="#">Conoce como trabajamos y nuestros servicios</a>
+            <NavLink to="/servicios" onClick={scrollTop}>
+              Conoce como trabajamos y nuestros los servicios que ofrecemos
+            </NavLink>
           </BoxFooter>
           <BoxFooter>
             <h5>Así decoramos</h5>
-            <a href="#">
+            <NavLink to="/contrataciones" onClick={scrollTop}>
               Conoce como manejamos nuestros contratos y contrataciones
-            </a>
+            </NavLink>
           </BoxFooter>
           <BoxFooter>
             <h5>Pago seguro</h5>
-            <img src={payments} alt="Metodos de pago" />
+            <NavLink to="/formas-de-pago" onClick={scrollTop}>
+              <img src={payments} alt="Metodos de pago" />
+            </NavLink>
           </BoxFooter>
         </Info>
         <hr />

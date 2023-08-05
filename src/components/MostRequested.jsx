@@ -6,7 +6,8 @@ import {
   TextContentImage,
   Modal,
   ModalContent,
-  ContentDescription,
+  ContentFlexCard,
+  ImageModal,
 } from "./LastestNews";
 
 const data = [
@@ -92,23 +93,23 @@ const MostRequested = () => {
         </ContentCards>
 
         <Modal className="modal" ref={modal}>
-          <ModalContent className="container section">
+          <ModalContent>
             <button onClick={toggleModalInfo}>
               <i className="bi bi-x-lg"></i>
             </button>
-            <div>
-              <img src={imgSrc} alt="Imagen" />
-            </div>
-            <ContentDescription>
-              <h4>{titleCard}</h4>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio,
-                sit accusamus adipisci nobis temporibus, ab ut accusantium cum
-                dignissimos minima sint qui magni rem corrupti! Animi temporibus
-                perferendis error quae.
-                {descriptionCard}
-              </p>
-            </ContentDescription>
+            <ContentFlexCard>
+              <ImageModal $backgroundImage={imgSrc} alt="Imagen" />
+              <div>
+                <h4>{titleCard}</h4>
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Odio, sit accusamus adipisci nobis temporibus, ab ut
+                  accusantium cum dignissimos minima sint qui magni rem
+                  corrupti! Animi temporibus perferendis error quae.
+                  {descriptionCard}
+                </p>
+              </div>
+            </ContentFlexCard>
           </ModalContent>
         </Modal>
       </article>

@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 import { GetImageUrl } from "../helpers/GetImageUrl";
-import { useState } from "react";
+import { useImage } from "../hooks/useImage";
 
 const data = [
   {
@@ -206,32 +206,59 @@ const data = [
 ];
 
 const BirthdayChildren = () => {
-  const [modal, setModal] = useState(false);
-  const [imgSrc, setImgSrc] = useState("");
-
-  const getImage = (imgSrc) => {
-    setImgSrc(imgSrc);
-    setModal(true);
-  };
+  const [modal, imgSrc, getImage, closeModal] = useImage(false);
 
   return (
     <section>
       <Modal className={modal ? "modal active" : "modal"}>
-        <button onClick={() => setModal(false)}>
+        <button onClick={closeModal}>
           <i className="bi bi-x-lg"></i>
         </button>
         <img src={imgSrc} />
       </Modal>
       <ContentInfo className="section container">
         <h2 className="text-center">Cumpleaños infaltil</h2>
+        <h4>¿Estas interesado en una fiesta infantil?</h4>
+        <p>Nos especializamos en fiestas infantiles temáticas.</p>
+        <ul>
+          <li>Superhéroes</li>
+          <li>Princesas</li>
+          <li>Personajes y programas de moda</li>
+        </ul>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-          voluptatibus ex autem architecto ea expedita iure adipisci dolor
-          recusandae? Nesciunt sit quisquam totam odio tempora repellat aliquam,
-          delectus culpa fugiat?
+          Si tienes tu propia idea tratamos de llevarla a la realidad. El modelo
+          y colores que elijas,podemos hacer cambios a tu gusto, festeja a tu
+          niño(a) de la mejor manera! Con una fiesta temática infantil!.
         </p>
+        <ul>
+          <li>Mobiliario</li>
+          <li>Globos</li>
+          <li>Personajes</li>
+          <li>Iluminación</li>
+          <li>Nombre del festejado (a)</li>
+          <li>Número con la edad que cumple</li>
+        </ul>
+        <p>Y todos los detalles más bonitos para ese gran día</p>
+
+        <h4>Contamos con paquetes especiales:</h4>
+        <ul>
+          <li>Mesa para pastel y regalos</li>
+          <li>Mesa de dulces</li>
+          <li>Entrada</li>
+          <li>Set para fotos</li>
+          <li>Decoración con globos del lugar</li>
+          <li>Pastel</li>
+          <li>Piñatas</li>
+          <li>Centros de mesa</li>
+          <li>Aguinaldos</li>
+          <li>Mobiliario</li>
+          <li>Meseros</li>
+          <li>Menú</li>
+        </ul>
+        <p>No dudes en preguntar por nuestros paquetes y precios.</p>
       </ContentInfo>
       <Gallery className="container section">
+        <h3>Galería</h3>
         {data.map((item, index) => {
           return (
             <Pics key={index} onClick={() => getImage(item.image)}>
@@ -256,6 +283,10 @@ const Gallery = styled.article`
   -moz-column-width: 100%;
   column-width: 100%;
 
+  h3 {
+    text-align: center;
+  }
+
   @media screen and (min-width: 768px) {
     -webkit-column-count: 2;
     -moz-column-count: 2;
@@ -277,7 +308,7 @@ const Pics = styled.div`
   margin-bottom: 12px;
 
   img {
-    border-radius: 0.25rem;
+    border-radius: 0.75rem;
   }
 
   @media screen and (min-width: 1024px) {
@@ -310,16 +341,13 @@ const Modal = styled.div`
     width: 2.5rem;
     height: 2.5rem;
     cursor: pointer;
-    background-color: #e5cccc;
+    background-color: #fff;
     border: none;
     border-radius: 100%;
 
     i {
       color: #bb1616;
-      font-size: 1.2rem;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      font-size: 1.5rem;
     }
   }
 
@@ -336,4 +364,4 @@ const Modal = styled.div`
   }
 `;
 
-export default BirthdayChildren;
+export { BirthdayChildren, ContentInfo, Gallery, Pics, Modal };
