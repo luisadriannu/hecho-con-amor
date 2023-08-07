@@ -6,6 +6,7 @@ import { Pagination, Navigation } from "swiper/modules";
 import "./Styles.css";
 import { GetImageUrl } from "../helpers/GetImageUrl";
 import { styled } from "styled-components";
+import { motion } from "framer-motion";
 
 const Carrusel = () => {
   return (
@@ -23,9 +24,16 @@ const Carrusel = () => {
       <SwiperSlide>
         <TextImg>
           <div>
-            <h2>
+            <motion.h2
+              initial={{ opacity: 0, scale: 0 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{
+                duration: 0.7,
+                ease: "easeIn",
+              }}
+            >
               Bienvenidos a <br /> hecho con am❤️r
-            </h2>
+            </motion.h2>
           </div>
         </TextImg>
         <img src={GetImageUrl("carrusel-1")} alt="Imagen Carrusel 1" />
@@ -95,7 +103,7 @@ const TextImg = styled.div`
   left: 0;
   right: 0;
   color: #fff;
-  background-color: #00000070;
+  background-color: #00000051;
   display: flex;
   flex-direction: column;
   justify-content: center;

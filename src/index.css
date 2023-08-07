@@ -90,9 +90,29 @@ h4 {
   font-size: var(--step-0);
 }
 
+::-webkit-scrollbar {
+  height: 5px;
+  width: 10px;
+  background: #fafafa;
+  -webkit-border-radius: 1ex;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #bb1616;
+  -webkit-border-radius: 1ex;
+}
+
+::-webkit-scrollbar-corner {
+  background: #fff3;
+}
+
 /* ***** Global Styles ***** */
 .text-center {
   text-align: center;
+}
+
+.m-0 {
+  margin: 0;
 }
 
 /* ***** Carrusel ***** */

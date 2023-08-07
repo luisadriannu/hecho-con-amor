@@ -1,13 +1,34 @@
 import { styled } from "styled-components";
 import { GetImageUrl } from "../helpers/GetImageUrl";
+import { motion } from "framer-motion";
 
 const WhySelect = () => {
   return (
     <MainContent className="vh-100">
       <article className="container section">
-        <h2 className="text-center">¿Porque elegirnos?</h2>
+        <motion.h2
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.9,
+            ease: "easeIn",
+            delay: 0.2,
+          }}
+          // viewport={{ once: true }}
+          className="text-center"
+        >
+          ¿Porque elegirnos?
+        </motion.h2>
         <ContentWhySelect>
-          <div>
+          <motion.div
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.9,
+              ease: "easeIn",
+              delay: 0.5,
+            }}
+          >
             <h4>
               <i className="bi bi-magic"></i> <br />
               Hacemos tus ideas realidad
@@ -16,8 +37,16 @@ const WhySelect = () => {
               Las ideas que tengas en mente las tomamos en cuenta para tus
               sorpresas o fiestas
             </p>
-          </div>
-          <div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.9,
+              ease: "easeIn",
+              delay: 0.8,
+            }}
+          >
             <h4>
               <i className="bi bi-star-fill"></i> <br />
               Wedding planner
@@ -27,14 +56,22 @@ const WhySelect = () => {
               y ayuda con la búsqueda gestión y contratación de todos los
               proveedores que puedan ser necesarios para organizar tu evento
             </p>
-          </div>
-          <div>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 100 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.9,
+              ease: "easeIn",
+              delay: 1.1,
+            }}
+          >
             <h4>
               <i className="bi bi-gift-fill"></i> <br />
               Temáticas
             </h4>
             <p>Contamos con diversas variedades de temáticas para fiestas</p>
-          </div>
+          </motion.div>
         </ContentWhySelect>
       </article>
     </MainContent>

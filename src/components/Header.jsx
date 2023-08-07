@@ -82,7 +82,6 @@ const Header = () => {
 
   const scrollTop = () => {
     window.scrollTo({
-      behavior: "smooth",
       top: 0,
     });
   };
@@ -133,6 +132,16 @@ const Header = () => {
                   }}
                 >
                   ● Adulto
+                </NavLink>
+                <br />
+                <NavLink
+                  to="/fiesta-xv"
+                  onClick={() => {
+                    toggleMenu();
+                    scrollTop();
+                  }}
+                >
+                  ● XV Años
                 </NavLink>
               </ContentListBirthday>
             ) : null}
@@ -204,7 +213,7 @@ const Header = () => {
                 </NavLink>
                 <br />
                 <NavLink
-                  to="/bautizmo"
+                  to="/bautizo"
                   onClick={() => {
                     toggleMenu();
                     scrollTop();

@@ -1,6 +1,9 @@
 import { GetImageUrl } from "../helpers/GetImageUrl";
 import { ContentInfo, Gallery, Pics, Modal } from "./BirthdayChildren";
 import { useImage } from "../hooks/useImage";
+import { motion } from "framer-motion";
+import { useLoader } from "../hooks/useLoader";
+import LoaderGallery from "../components/LoaderGallery";
 
 const data = [
   {
@@ -91,13 +94,78 @@ const data = [
     id: 22,
     image: `${GetImageUrl("christening-22")}`,
   },
+  {
+    id: 23,
+    image: `${GetImageUrl("christening-23")}`,
+  },
+  {
+    id: 24,
+    image: `${GetImageUrl("christening-24")}`,
+  },
+  {
+    id: 25,
+    image: `${GetImageUrl("christening-25")}`,
+  },
+  {
+    id: 26,
+    image: `${GetImageUrl("christening-26")}`,
+  },
+  {
+    id: 27,
+    image: `${GetImageUrl("christening-27")}`,
+  },
+  {
+    id: 28,
+    image: `${GetImageUrl("christening-28")}`,
+  },
+  {
+    id: 29,
+    image: `${GetImageUrl("christening-29")}`,
+  },
+  {
+    id: 30,
+    image: `${GetImageUrl("christening-30")}`,
+  },
+  {
+    id: 31,
+    image: `${GetImageUrl("christening-31")}`,
+  },
+  {
+    id: 32,
+    image: `${GetImageUrl("christening-32")}`,
+  },
+  {
+    id: 33,
+    image: `${GetImageUrl("christening-33")}`,
+  },
+  {
+    id: 34,
+    image: `${GetImageUrl("christening-34")}`,
+  },
+  {
+    id: 35,
+    image: `${GetImageUrl("christening-35")}`,
+  },
+  {
+    id: 36,
+    image: `${GetImageUrl("christening-36")}`,
+  },
 ];
 
 const Christening = () => {
   const [modal, imgSrc, getImage, closeModal] = useImage(false);
+  const [loaderGallery] = useLoader();
 
   return (
-    <section>
+    <motion.section
+      initial={{ opacity: 0, y: 100 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.6,
+        ease: "easeIn",
+      }}
+      exit={{ opacity: 0 }}
+    >
       <Modal className={modal ? "modal active" : "modal"}>
         <button onClick={closeModal}>
           <i className="bi bi-x-lg"></i>
@@ -106,7 +174,7 @@ const Christening = () => {
       </Modal>
       <ContentInfo className="section container">
         <h2 className="text-center">Bautizos</h2>
-        <h4>¿Estas interesado en tener una decoración de bautizmo?</h4>
+        <h4>¿Estas interesado en tener una decoración de bautizo?</h4>
         <p>
           El sacramento del bautizmo es de los más importantes para todo
           católico. Y para ese evento tan especial te ofrecemos lo mejor en
@@ -123,17 +191,23 @@ const Christening = () => {
           idea para llevarla a cabo.
         </p>
       </ContentInfo>
-      <Gallery className="container section">
-        <h3>Galería</h3>
-        {data.map((item, index) => {
-          return (
-            <Pics key={index} onClick={() => getImage(item.image)}>
-              <img src={item.image} />
-            </Pics>
-          );
-        })}
-      </Gallery>
-    </section>
+      <article className="container section">
+        <h3 className="text-center">Galería</h3>
+        {loaderGallery ? (
+          <LoaderGallery />
+        ) : (
+          <Gallery>
+            {data.map((item, index) => {
+              return (
+                <Pics key={index} onClick={() => getImage(item.image)}>
+                  <img src={item.image} />
+                </Pics>
+              );
+            })}
+          </Gallery>
+        )}
+      </article>
+    </motion.section>
   );
 };
 export default Christening;

@@ -1,5 +1,6 @@
 import { styled } from "styled-components";
 import { GetImageUrl } from "../helpers/GetImageUrl";
+import { motion } from "framer-motion";
 
 const data = [
   {
@@ -78,7 +79,15 @@ const data = [
 
 const FeaturedCategories = () => {
   return (
-    <section>
+    <motion.section
+      initial={{ opacity: 0, y: 100 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.6,
+        ease: "easeIn",
+      }}
+      viewport={{ once: true }}
+    >
       <article className="container section">
         <h2 className="text-center">Categorías descatadas</h2>
         <ContentGrid>
@@ -94,7 +103,7 @@ const FeaturedCategories = () => {
           })}
         </ContentGrid>
       </article>
-    </section>
+    </motion.section>
   );
 };
 

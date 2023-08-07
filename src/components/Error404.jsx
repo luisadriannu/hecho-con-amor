@@ -35,6 +35,7 @@ const ContentError = styled.section`
     padding: 0.75rem;
     border-radius: 0.25rem;
     background-color: #bb1616;
+    font-weight: bolder;
   }
 `;
 

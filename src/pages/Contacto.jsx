@@ -5,6 +5,7 @@ import Loading from "../components/Loading";
 import Message from "../components/Message";
 import { AnimatePresence } from "framer-motion";
 import "../components/Styles.css";
+import { motion } from "framer-motion";
 
 const initialForm = {
   name: "",
@@ -17,7 +18,7 @@ const validationsForm = (form) => {
   let errors = {};
   let regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
   let regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
-  let regexPhone = /^(?:\+\d{1,3}\s?)?(?:\d{1,3}[-\s])?\d{3,}-\d{4}$/;
+  let regexPhone = /^\d{3}-?\d{3}-?\d{4}$/;
   let regexComments = /^.{1,255}$/;
 
   if (!form.name.trim()) {
@@ -65,100 +66,135 @@ const Contacto = () => {
   } = useForm(initialForm, validationsForm);
 
   return (
-    <>
+    <motion.section
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{
+        duration: 0.8,
+        ease: "easeIn",
+      }}
+      exit={{ opacity: 0 }}
+    >
       <ConffetiBackground>
-        <h2>Contacto</h2>
-        <h4>
+        <motion.h2
+          initial={{ opacity: 0, y: -15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.8,
+            ease: "easeIn",
+          }}
+          className="m-0"
+        >
+          Contacto
+        </motion.h2>
+        <motion.h4
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.8,
+            ease: "easeIn",
+          }}
+        >
           Para cualquier consulta o aclaración sobre nuestros servicios o sobre
           algún tipo de fiesta que le interese, llámanos o envíanos un mensaje,
-          Nuestro equipo estará encantado de ayudarte.
-        </h4>
+          nuestro equipo estará encantado de ayudarte.
+        </motion.h4>
       </ConffetiBackground>
-      <ContentMainContact className="mt-1 pb-1 container section">
-        <ContactInfo>
-          <i className="bi bi-shop"></i>
-          <h3>Hecho con amor</h3>
-          <p>
-            Somos una empresa dedicada a cumplir sueños y hacer de tu evento
-            algo inolvidable.
-          </p>
-          <h5>Wedding Planner</h5>
-          <p>
-            <b>Dirección:</b> Riva Palacio Mich.
-          </p>
-          <i className="bi bi-clock icon-contact"></i>
-          <p>LUNES-SABADO: 10:00 A.M. - 6:00 P.M.</p>
-          <p>
-            <b>Teléfono:</b> <a href="tel:7671120719">(+52) 767 112 0719</a>
-          </p>
-          <i className="bi bi-envelope-fill icon-contact"></i>
-          <p>
-            <a href="mailto:#######">hechoconamor@gmail.com</a>
-          </p>
-        </ContactInfo>
-        <ContactForm>
-          <h3>Tu mensaje</h3>
-          <form onSubmit={handleSubmit}>
-            <label htmlFor="name"> NOMBRE Y APELLIDOS</label>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              onBlur={handleBlur}
-              onChange={handleChange}
-              value={form.name}
-              required
-              maxLength="50"
-            />
-            {errors.name && <p style={styles}>{errors.name}</p>}
-            <label htmlFor="email"> TU CORREO ELECTRÓNICO</label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              onBlur={handleBlur}
-              onChange={handleChange}
-              value={form.email}
-              required
-              maxLength="50"
-            />
-            {errors.email && <p style={styles}>{errors.email}</p>}
-            <label htmlFor="phone"> TELÉFONO</label>
-            <input
-              type="text"
-              name="phone"
-              id="phone"
-              onBlur={handleBlur}
-              onChange={handleChange}
-              value={form.phone}
-              required
-              maxLength="15"
-            />
-            {errors.phone && <p style={styles}>{errors.phone}</p>}
-            <label htmlFor="comments"> TU MENSAJE</label>
-            <textarea
-              name="comments"
-              id="comments"
-              cols="30"
-              rows="10"
-              onBlur={handleBlur}
-              onChange={handleChange}
-              value={form.comments}
-              required
-              maxLength="255"
-            ></textarea>
-            {errors.comments && <p style={styles}>{errors.comments}</p>}
-            <input type="submit" value="Enviar" />
-          </form>
-          {loading ? <Loading /> : null}
-          <AnimatePresence>{response ? <Message /> : null}</AnimatePresence>
-        </ContactForm>
-      </ContentMainContact>
-    </>
+      <motion.article
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.6,
+          ease: "easeIn",
+        }}
+        viewport={{ once: true }}
+      >
+        <ContentMainContact className="container section">
+          <ContactInfo>
+            <i className="bi bi-shop"></i>
+            <h3>Hecho con amor</h3>
+            <p>
+              Somos una empresa dedicada a cumplir sueños y hacer de tu evento
+              algo inolvidable.
+            </p>
+            <h5>Wedding Planner</h5>
+            <p>
+              <b>Dirección:</b> Riva Palacio Mich.
+            </p>
+            <i className="bi bi-clock icon-contact"></i>
+            <p>LUNES-SABADO: 10:00 A.M. - 6:00 P.M.</p>
+            <p>
+              <b>Teléfono:</b> <a href="tel:7671120719">(+52) 767 112 0719</a>
+            </p>
+            <i className="bi bi-envelope-fill icon-contact"></i>
+            <p>
+              <a href="mailto:#######">hechoconamor@gmail.com</a>
+            </p>
+          </ContactInfo>
+          <ContactForm>
+            <h3>Tu mensaje</h3>
+            <form onSubmit={handleSubmit}>
+              <label htmlFor="name"> NOMBRE Y APELLIDOS</label>
+              <input
+                type="text"
+                name="name"
+                id="name"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={form.name}
+                required
+                maxLength="50"
+              />
+              {errors.name && <p style={styles}>{errors.name}</p>}
+              <label htmlFor="email"> TU CORREO ELECTRÓNICO</label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={form.email}
+                required
+                maxLength="50"
+              />
+              {errors.email && <p style={styles}>{errors.email}</p>}
+              <label htmlFor="phone"> TELÉFONO</label>
+              <input
+                type="text"
+                name="phone"
+                id="phone"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={form.phone}
+                required
+                maxLength="15"
+              />
+              {errors.phone && <p style={styles}>{errors.phone}</p>}
+              <label htmlFor="comments"> TU MENSAJE</label>
+              <textarea
+                name="comments"
+                id="comments"
+                cols="30"
+                rows="10"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={form.comments}
+                required
+                maxLength="255"
+              ></textarea>
+              {errors.comments && <p style={styles}>{errors.comments}</p>}
+              <input type="submit" value="Enviar" />
+            </form>
+            {loading ? <Loading /> : null}
+            <AnimatePresence>{response ? <Message /> : null}</AnimatePresence>
+          </ContactForm>
+        </ContentMainContact>
+      </motion.article>
+    </motion.section>
   );
 };
 
-const ContactInfo = styled.article`
+const ContactInfo = styled.div`
   text-align: center;
   h3 {
     color: #bb1616;
@@ -175,16 +211,16 @@ const ContactInfo = styled.article`
   }
 `;
 
-const ContentMainContact = styled.section`
+const ContentMainContact = styled.div`
+  padding: 4rem 20px 4rem 20px;
   @media screen and (min-width: 1024px) {
     display: flex;
     justify-content: space-evenly;
-
     gap: 1rem;
   }
 `;
 
-const ContactForm = styled.article`
+const ContactForm = styled.div`
   width: 100%;
 
   input[type="text"],

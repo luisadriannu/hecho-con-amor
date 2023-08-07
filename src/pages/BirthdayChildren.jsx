@@ -1,6 +1,9 @@
 import { styled } from "styled-components";
 import { GetImageUrl } from "../helpers/GetImageUrl";
 import { useImage } from "../hooks/useImage";
+import { motion } from "framer-motion";
+import LoaderGallery from "../components/LoaderGallery";
+import { useLoader } from "../hooks/useLoader";
 
 const data = [
   {
@@ -203,13 +206,55 @@ const data = [
     id: 50,
     image: `${GetImageUrl("birthday-children-50")}`,
   },
+  {
+    id: 51,
+    image: `${GetImageUrl("birthday-children-51")}`,
+  },
+  {
+    id: 52,
+    image: `${GetImageUrl("birthday-children-52")}`,
+  },
+  {
+    id: 53,
+    image: `${GetImageUrl("birthday-children-53")}`,
+  },
+  {
+    id: 54,
+    image: `${GetImageUrl("birthday-children-54")}`,
+  },
+  {
+    id: 55,
+    image: `${GetImageUrl("birthday-children-55")}`,
+  },
+  {
+    id: 56,
+    image: `${GetImageUrl("birthday-children-56")}`,
+  },
+  {
+    id: 57,
+    image: `${GetImageUrl("birthday-children-57")}`,
+  },
+  {
+    id: 58,
+    image: `${GetImageUrl("birthday-children-58")}`,
+  },
+  1,
 ];
 
 const BirthdayChildren = () => {
   const [modal, imgSrc, getImage, closeModal] = useImage(false);
+  const [loaderGallery] = useLoader();
 
   return (
-    <section>
+    <motion.section
+      initial={{ opacity: 0, y: 100 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.6,
+        ease: "easeIn",
+      }}
+      exit={{ opacity: 0 }}
+    >
       <Modal className={modal ? "modal active" : "modal"}>
         <button onClick={closeModal}>
           <i className="bi bi-x-lg"></i>
@@ -257,17 +302,23 @@ const BirthdayChildren = () => {
         </ul>
         <p>No dudes en preguntar por nuestros paquetes y precios.</p>
       </ContentInfo>
-      <Gallery className="container section">
-        <h3>Galería</h3>
-        {data.map((item, index) => {
-          return (
-            <Pics key={index} onClick={() => getImage(item.image)}>
-              <img src={item.image} />
-            </Pics>
-          );
-        })}
-      </Gallery>
-    </section>
+      <article className="container section">
+        <h3 className="text-center">Galería</h3>
+        {loaderGallery ? (
+          <LoaderGallery />
+        ) : (
+          <Gallery>
+            {data.map((item, index) => {
+              return (
+                <Pics key={index} onClick={() => getImage(item.image)}>
+                  <img src={item.image} />
+                </Pics>
+              );
+            })}
+          </Gallery>
+        )}
+      </article>
+    </motion.section>
   );
 };
 
@@ -282,10 +333,6 @@ const Gallery = styled.article`
   -webkit-column-width: 100%;
   -moz-column-width: 100%;
   column-width: 100%;
-
-  h3 {
-    text-align: center;
-  }
 
   @media screen and (min-width: 768px) {
     -webkit-column-count: 2;

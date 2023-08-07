@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 import { GetImageUrl } from "../helpers/GetImageUrl";
 import { useRef, useState } from "react";
 import "./Styles.css";
+import { motion } from "framer-motion";
 
 const data = [
   {
@@ -66,7 +67,16 @@ const LastestNews = () => {
   };
 
   return (
-    <section className="pb-1">
+    <motion.section
+      initial={{ opacity: 0, y: 100 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.6,
+        ease: "easeIn",
+      }}
+      viewport={{ once: true }}
+      className="pb-1"
+    >
       <article className="section container">
         <h2 className="text-center">Últimas novedades</h2>
         <ContentCards>
@@ -112,7 +122,7 @@ const LastestNews = () => {
           </ModalContent>
         </Modal>
       </article>
-    </section>
+    </motion.section>
   );
 };
 

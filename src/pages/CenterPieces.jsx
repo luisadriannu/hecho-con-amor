@@ -1,6 +1,9 @@
 import { GetImageUrl } from "../helpers/GetImageUrl";
 import { ContentInfo, Gallery, Pics, Modal } from "./BirthdayChildren";
 import { useImage } from "../hooks/useImage";
+import { motion } from "framer-motion";
+import LoaderGallery from "../components/LoaderGallery";
+import { useLoader } from "../hooks/useLoader";
 
 const data = [
   {
@@ -143,9 +146,18 @@ const data = [
 
 const CenterPieces = () => {
   const [modal, imgSrc, getImage, closeModal] = useImage(false);
+  const [loaderGallery] = useLoader();
 
   return (
-    <section>
+    <motion.section
+      initial={{ opacity: 0, y: 100 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.6,
+        ease: "easeIn",
+      }}
+      exit={{ opacity: 0 }}
+    >
       <Modal className={modal ? "modal active" : "modal"}>
         <button onClick={closeModal}>
           <i className="bi bi-x-lg"></i>
@@ -171,17 +183,23 @@ const CenterPieces = () => {
           muestras sin compromiso.
         </p>
       </ContentInfo>
-      <Gallery className="container section">
-        <h3>Galería</h3>
-        {data.map((item, index) => {
-          return (
-            <Pics key={index} onClick={() => getImage(item.image)}>
-              <img src={item.image} />
-            </Pics>
-          );
-        })}
-      </Gallery>
-    </section>
+      <article className="container section">
+        <h3 className="text-center">Galería</h3>
+        {loaderGallery ? (
+          <LoaderGallery />
+        ) : (
+          <Gallery>
+            {data.map((item, index) => {
+              return (
+                <Pics key={index} onClick={() => getImage(item.image)}>
+                  <img src={item.image} />
+                </Pics>
+              );
+            })}
+          </Gallery>
+        )}
+      </article>
+    </motion.section>
   );
 };
 export default CenterPieces;

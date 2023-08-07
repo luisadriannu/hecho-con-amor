@@ -9,7 +9,7 @@ const ConffetiBackground = ({ children }) => {
   );
 };
 
-const Background = styled.section`
+const Background = styled.article`
   background-image: url(${Confetti});
   background-repeat: no-repeat;
   background-position: center;
@@ -21,7 +21,7 @@ const Background = styled.section`
   /* padding: 4rem 0; */
 `;
 
-const Conffeti = styled.section`
+const Conffeti = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;

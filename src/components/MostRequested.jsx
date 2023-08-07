@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { GetImageUrl } from "../helpers/GetImageUrl";
+import { motion } from "framer-motion";
 import {
   ContentCards,
   Card,
@@ -67,7 +68,15 @@ const MostRequested = () => {
   };
 
   return (
-    <section>
+    <motion.section
+      initial={{ opacity: 0, y: 100 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{
+        duration: 0.6,
+        ease: "easeIn",
+      }}
+      viewport={{ once: true }}
+    >
       <article className="container section">
         <h2 className="text-center">Lo más solicitado</h2>
         <ContentCards>
@@ -113,7 +122,7 @@ const MostRequested = () => {
           </ModalContent>
         </Modal>
       </article>
-    </section>
+    </motion.section>
   );
 };
 
