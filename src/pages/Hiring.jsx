@@ -15,8 +15,11 @@ const Hiring = () => {
       <ContentMain>
         <div className="container section">
           <h2 className="text-center">Contrataciones</h2>
+          <h3>¿Te interesa saber como son nuestras contrataciones?</h3>
           <p>
-            Por medio de un contrato donde especificamos nombre del contratante.
+            Generalmente nuestras contrataciones son por medio de un contrato
+            donde especificamos nombre del contratante, el contrato contiene lo
+            siguiente:
           </p>
           <ul>
             <li>Fecha del contrato</li>

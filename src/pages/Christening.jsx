@@ -173,7 +173,7 @@ const Christening = () => {
         <img src={imgSrc} />
       </Modal>
       <ContentInfo className="section container">
-        <h2 className="text-center">Bautizos</h2>
+        <h2 className="text-center">Bautizo</h2>
         <h4>¿Estas interesado en tener una decoración de bautizo?</h4>
         <p>
           El sacramento del bautizmo es de los más importantes para todo

@@ -14,7 +14,7 @@ const WhySelect = () => {
             ease: "easeIn",
             delay: 0.2,
           }}
-          // viewport={{ once: true }}
+          viewport={{ once: true }}
           className="text-center"
         >
           ¿Porque elegirnos?
@@ -28,6 +28,7 @@ const WhySelect = () => {
               ease: "easeIn",
               delay: 0.5,
             }}
+            viewport={{ once: true }}
           >
             <h4>
               <i className="bi bi-magic"></i> <br />
@@ -46,6 +47,7 @@ const WhySelect = () => {
               ease: "easeIn",
               delay: 0.8,
             }}
+            viewport={{ once: true }}
           >
             <h4>
               <i className="bi bi-star-fill"></i> <br />
@@ -65,6 +67,7 @@ const WhySelect = () => {
               ease: "easeIn",
               delay: 1.1,
             }}
+            viewport={{ once: true }}
           >
             <h4>
               <i className="bi bi-gift-fill"></i> <br />

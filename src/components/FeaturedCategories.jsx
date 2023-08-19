@@ -1,83 +1,103 @@
 import { styled } from "styled-components";
 import { GetImageUrl } from "../helpers/GetImageUrl";
 import { motion } from "framer-motion";
+import { NavLink } from "react-router-dom";
+import "./Styles.css";
 
 const data = [
   {
     id: 1,
     image: `${GetImageUrl("featured-categorie-1")}`,
     title: "Mesa de dulces, postres y mixtos",
+    link: "/mesas-de-dulces",
     color: "#D363A5",
   },
   {
     id: 2,
     image: `${GetImageUrl("featured-categorie-2")}`,
-    title: "Set de fotos",
+    title: "Set para fotos",
+    link: "/set-para-fotos",
     color: "#6C9111",
   },
   {
     id: 3,
     image: `${GetImageUrl("featured-categorie-3")}`,
     title: "Cenas romanticas",
+    link: "/cenas-romanticas",
     color: "#da3232",
   },
   {
     id: 4,
     image: `${GetImageUrl("featured-categorie-4")}`,
     title: "Declaraciones",
+    link: "/cenas-romanticas",
     color: "#AE2752",
   },
   {
     id: 5,
     image: `${GetImageUrl("featured-categorie-5")}`,
-    title: "Bautizos",
+    title: "Bautizo",
+    link: "/bautizo",
     color: "#A1674F",
   },
   {
     id: 6,
     image: `${GetImageUrl("featured-categorie-6")}`,
     title: "Centros de mesa",
+    link: "/centros-de-mesa",
     color: "#69A0E2",
   },
   {
     id: 7,
     image: `${GetImageUrl("featured-categorie-7")}`,
-    title: "Arcos de luces",
+    title: "Arco de luces",
+    link: "/bodas",
     color: "#90663F",
   },
   {
     id: 8,
     image: `${GetImageUrl("featured-categorie-8")}`,
     title: "Fiestas con temática",
+    link: "/fiesta-adulto",
     color: "#AE9ECF",
   },
   {
     id: 9,
     image: `${GetImageUrl("featured-categorie-9")}`,
     title: "Postres",
+    link: "/mesas-de-dulces",
     color: "#2E784D",
   },
   {
     id: 10,
     image: `${GetImageUrl("featured-categorie-10")}`,
     title: "Set de fotos con flores",
+    link: "/set-para-fotos",
     color: "#D59FBF",
   },
   {
     id: 11,
     image: `${GetImageUrl("featured-categorie-11")}`,
     title: "Centros de mesa para todo tipo de fiesta",
+    link: "/centros-de-mesa",
     color: "#BE6621",
   },
   {
     id: 12,
     image: `${GetImageUrl("featured-categorie-12")}`,
     title: "Pedidas de mano",
+    link: "/cenas-romanticas",
     color: "#AD382E",
   },
 ];
 
 const FeaturedCategories = () => {
+  const scrollTop = () => {
+    window.scrollTo({
+      top: 0,
+    });
+  };
+
   return (
     <motion.section
       initial={{ opacity: 0, y: 100 }}
@@ -94,10 +114,12 @@ const FeaturedCategories = () => {
           {data.map((item, index) => {
             return (
               <ContainerCardImage id={item.id} key={index}>
-                <Image $backgroundimage={item.image} />
-                <TextContentImage $backgroundcolor={item.color}>
-                  <h5>{item.title}</h5>
-                </TextContentImage>
+                <NavLink to={item.link} onClick={scrollTop}>
+                  <Image $backgroundimage={item.image} />
+                  <TextContentImage $backgroundcolor={item.color}>
+                    <h5>{item.title}</h5>
+                  </TextContentImage>
+                </NavLink>
               </ContainerCardImage>
             );
           })}
@@ -109,16 +131,12 @@ const FeaturedCategories = () => {
 
 const ContentGrid = styled.div`
   display: grid;
-  /* grid-template-columns: repeat(1, minmax(300px, 1fr)); */
   grid-template-columns: repeat(auto-fit, minmax(279px, 1fr));
   gap: 0.75rem;
 
   @media screen and (min-width: 768px) {
     grid-template-columns: repeat(9, 1fr);
     grid-template-rows: repeat(5, 200px);
-  }
-
-  @media screen and (min-width: 1024px) {
   }
 `;
 
@@ -139,7 +157,7 @@ const Image = styled.div`
   }
 `;
 
-const ContainerCardImage = styled.article`
+const ContainerCardImage = styled.div`
   overflow: hidden;
   border-radius: 0.75rem;
   position: relative;
@@ -199,7 +217,7 @@ const ContainerCardImage = styled.article`
   }
 `;
 
-const TextContentImage = styled.div`
+const TextContentImage = styled.aside`
   background-color: ${(props) => props.$backgroundcolor || "#fff"};
   padding: 0.5rem;
   position: absolute;
