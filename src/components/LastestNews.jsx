@@ -108,7 +108,7 @@ const LastestNews = () => {
             </button>
             <ContentFlexCard>
               <ImageModal $backgroundImage={imgSrc} alt="Imagen" />
-              <div>
+              <BoxInfo>
                 <h4>{titleCard}</h4>
                 <p>
                   Lorem ipsum dolor sit amet, consectetur adipisicing elit.
@@ -117,7 +117,7 @@ const LastestNews = () => {
                   corrupti! Animi temporibus perferendis error quae.
                   {descriptionCard}
                 </p>
-              </div>
+              </BoxInfo>
             </ContentFlexCard>
           </ModalContent>
         </Modal>
@@ -137,7 +137,7 @@ const Card = styled.article`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  border-radius: 0.75rem;
+  border: 2px solid #000;
   position: relative;
   min-height: 412px;
   cursor: pointer;
@@ -177,13 +177,13 @@ const Modal = styled.div`
 const ModalContent = styled.div`
   background-color: #fff;
   width: 90%;
-  border-radius: 0.75rem;
+  border: 2px solid #000;
   position: relative;
 
   button {
     position: absolute;
-    right: 1rem;
-    top: 1rem;
+    right: 0.5rem;
+    top: 0.5rem;
     width: 2.5rem;
     height: 2.5rem;
     cursor: pointer;
@@ -213,16 +213,22 @@ const ImageModal = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  border-radius: 0.25rem;
+  border: 2px solid #000;
   height: 368px;
   width: 100%;
 `;
 
+const BoxInfo = styled.div`
+  padding: 1rem 0;
+`;
+
 const ContentFlexCard = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   padding: 1rem;
 
   @media screen and (min-width: 1024px) {
-    display: flex;
     gap: 1rem;
 
     div {

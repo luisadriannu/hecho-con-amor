@@ -10,7 +10,7 @@ const WhySelect = () => {
           initial={{ opacity: 0, y: 100 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{
-            duration: 0.9,
+            duration: 0.5,
             ease: "easeIn",
             delay: 0.2,
           }}
@@ -24,7 +24,7 @@ const WhySelect = () => {
             initial={{ opacity: 0, y: 100 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{
-              duration: 0.9,
+              duration: 0.6,
               ease: "easeIn",
               delay: 0.5,
             }}
@@ -43,9 +43,9 @@ const WhySelect = () => {
             initial={{ opacity: 0, y: 100 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{
-              duration: 0.9,
+              duration: 0.7,
               ease: "easeIn",
-              delay: 0.8,
+              delay: 0.6,
             }}
             viewport={{ once: true }}
           >

@@ -11,6 +11,8 @@ const Header = () => {
   const [listBabys, setlistBabys] = useState(false);
   const [listArrangements, setlistArrangements] = useState(false);
   const [desktop, setDesktop] = useState(false);
+  // const [stylesInteractive, setStylesInteractive] = useState(false);
+  const [btnMenu, setBtnMenu] = useState(false);
 
   const menu = useRef();
   const modal = useRef();
@@ -52,7 +54,12 @@ const Header = () => {
   const toggleMenu = () => {
     menu.current.classList.toggle("toggle-menu");
     modal.current.classList.toggle("active");
+    setBtnMenu(!btnMenu);
   };
+
+  // const toggleStyle = () => {
+  //   setStylesInteractive(!stylesInteractive);
+  // };
 
   const extendMenu = (e) => {
     if (!desktop) {
@@ -89,8 +96,12 @@ const Header = () => {
   return (
     <HeaderMain>
       <HeaderMenu className="container">
-        <button onClick={toggleMenu}>
-          <i className="bi bi-list"></i>
+        <button
+          onClick={() => {
+            toggleMenu();
+          }}
+        >
+          <i className={btnMenu ? "bi bi-x-lg" : "bi bi-list"}></i>
         </button>
         <Logo>
           <a href="/">
@@ -98,9 +109,6 @@ const Header = () => {
           </a>
         </Logo>
         <Menu ref={menu} className="menu">
-          <button onClick={toggleMenu}>
-            <i className="bi bi-x-lg"></i>
-          </button>
           <NavLink
             to="/"
             onClick={() => {
@@ -112,144 +120,141 @@ const Header = () => {
           </NavLink>
           <LinkMenu onClick={extendMenu} ref={birthdays}>
             Cumpleaños <i className="bi bi-caret-down-fill"></i>
-            {listBirthday ? (
-              <ContentListBirthday>
-                <NavLink
-                  to="/fiesta-infantil"
-                  onClick={() => {
-                    toggleMenu();
-                    scrollTop();
-                  }}
-                >
-                  ● Intantil
-                </NavLink>
-                <br />
-                <NavLink
-                  to="/fiesta-adulto"
-                  onClick={() => {
-                    toggleMenu();
-                    scrollTop();
-                  }}
-                >
-                  ● Adulto
-                </NavLink>
-                <br />
-                <NavLink
-                  to="/fiesta-xv"
-                  onClick={() => {
-                    toggleMenu();
-                    scrollTop();
-                  }}
-                >
-                  ● XV Años
-                </NavLink>
-              </ContentListBirthday>
-            ) : null}
           </LinkMenu>
+          {listBirthday ? (
+            <ContentListBirthday>
+              <NavLink
+                to="/fiesta-infantil"
+                onClick={() => {
+                  toggleMenu();
+                  scrollTop();
+                }}
+              >
+                <div>● Intantil</div>
+              </NavLink>
+
+              <NavLink
+                to="/fiesta-adulto"
+                onClick={() => {
+                  toggleMenu();
+                  scrollTop();
+                }}
+              >
+                <div>● Adulto</div>
+              </NavLink>
+              <NavLink
+                to="/fiesta-xv"
+                onClick={() => {
+                  toggleMenu();
+                  scrollTop();
+                }}
+              >
+                <div>● XV Años</div>
+              </NavLink>
+            </ContentListBirthday>
+          ) : null}
           <LinkMenu onClick={extendMenu} ref={photos}>
             Fotos <i className="bi bi-caret-down-fill"></i>
-            {listPhotos ? (
-              <ContentListBirthday>
-                <NavLink
-                  to="/set-para-fotos"
-                  onClick={() => {
-                    toggleMenu();
-                    scrollTop();
-                  }}
-                >
-                  ● Set de fotos
-                </NavLink>
-                <br />
-                <NavLink
-                  to="/graduaciones"
-                  onClick={() => {
-                    toggleMenu();
-                    scrollTop();
-                  }}
-                >
-                  ● Graduaciones
-                </NavLink>
-              </ContentListBirthday>
-            ) : null}
           </LinkMenu>
+          {listPhotos ? (
+            <ContentListBirthday>
+              <NavLink
+                to="/set-para-fotos"
+                onClick={() => {
+                  toggleMenu();
+                  scrollTop();
+                }}
+              >
+                <div>● Set de fotos</div>
+              </NavLink>
+              <NavLink
+                to="/graduaciones"
+                onClick={() => {
+                  toggleMenu();
+                  scrollTop();
+                }}
+              >
+                <div>● Graduaciones</div>
+              </NavLink>
+            </ContentListBirthday>
+          ) : null}
           <LinkMenu onClick={extendMenu} ref={romantic}>
             Romántico <i className="bi bi-caret-down-fill"></i>
-            {listRomantic ? (
-              <ContentListBirthday>
-                <NavLink
-                  to="/cenas-romanticas"
-                  onClick={() => {
-                    toggleMenu();
-                    scrollTop();
-                  }}
-                >
-                  ● Cenas románticas
-                </NavLink>
-                <br />
-                <NavLink
-                  to="/bodas"
-                  onClick={() => {
-                    toggleMenu();
-                    scrollTop();
-                  }}
-                >
-                  ● Bodas
-                </NavLink>
-              </ContentListBirthday>
-            ) : null}
           </LinkMenu>
+          {listRomantic ? (
+            <ContentListBirthday>
+              <NavLink
+                to="/cenas-romanticas"
+                onClick={() => {
+                  toggleMenu();
+                  scrollTop();
+                }}
+              >
+                <div>● Cenas románticas</div>
+              </NavLink>
+              <NavLink
+                to="/bodas"
+                onClick={() => {
+                  toggleMenu();
+                  scrollTop();
+                }}
+              >
+                <div>● Bodas</div>
+              </NavLink>
+            </ContentListBirthday>
+          ) : null}
           <LinkMenu onClick={extendMenu} ref={babys}>
             Bebés <i className="bi bi-caret-down-fill"></i>
-            {listBabys ? (
-              <ContentListBirthday>
-                <NavLink
-                  to="/baby-showers"
-                  onClick={() => {
-                    toggleMenu();
-                    scrollTop();
-                  }}
-                >
-                  ● Baby showers
-                </NavLink>
-                <br />
-                <NavLink
-                  to="/bautizo"
-                  onClick={() => {
-                    toggleMenu();
-                    scrollTop();
-                  }}
-                >
-                  ● Bautizos
-                </NavLink>
-              </ContentListBirthday>
-            ) : null}
           </LinkMenu>
+          {listBabys ? (
+            <ContentListBirthday>
+              <NavLink
+                to="/baby-showers"
+                onClick={() => {
+                  toggleMenu();
+                  scrollTop();
+                }}
+              >
+                <div>● Baby showers</div>
+              </NavLink>
+
+              <NavLink
+                to="/bautizo"
+                onClick={() => {
+                  toggleMenu();
+                  scrollTop();
+                }}
+              >
+                <div>● Bautizos</div>
+              </NavLink>
+            </ContentListBirthday>
+          ) : null}
           <LinkMenu onClick={extendMenu} ref={arrangement}>
             Arreglos <i className="bi bi-caret-down-fill"></i>
-            {listArrangements ? (
-              <ContentListBirthday>
-                <NavLink
-                  to="/centros-de-mesa"
-                  onClick={() => {
-                    toggleMenu();
-                    scrollTop();
-                  }}
-                >
-                  ● Centros de mesa
-                </NavLink>
-                <br />
-                <NavLink
-                  to="/mesas-de-dulces"
-                  onClick={() => {
-                    toggleMenu();
-                    scrollTop();
-                  }}
-                >
-                  ● Mesas de dulces
-                </NavLink>
-              </ContentListBirthday>
-            ) : null}
           </LinkMenu>
+          {listArrangements ? (
+            <ContentListBirthday>
+              <NavLink
+                to="/centros-de-mesa"
+                onClick={() => {
+                  toggleMenu();
+                  scrollTop();
+                }}
+              >
+                <div>● Centros de mesa</div>
+              </NavLink>
+
+              <NavLink
+                to="/mesas-de-dulces"
+                onClick={() => {
+                  toggleMenu();
+                  scrollTop();
+                }}
+              >
+                <div>● Mesas de dulces</div>
+              </NavLink>
+            </ContentListBirthday>
+          ) : null}
           <NavLink
             to="/contacto"
             onClick={() => {
@@ -271,6 +276,10 @@ const HeaderMain = styled.header`
   position: fixed;
   z-index: 997;
   width: 100%;
+
+  @media screen and (min-width: 1024px) {
+    border-bottom: 2px solid #000;
+  }
 `;
 
 const HeaderMenu = styled.article`
@@ -281,21 +290,32 @@ const HeaderMenu = styled.article`
   top: 0;
   display: flex;
   justify-content: space-between;
+  border-bottom: 2px solid #000;
 
   button {
-    padding: 1rem;
+    z-index: 999;
+    padding: 0.75rem;
     background-color: transparent;
     border: none;
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &:active {
+      border: 2px dashed #000 !important;
+    }
 
     i {
-      font-size: 1.8rem;
+      font-size: 2.5rem;
     }
   }
 
   @media screen and (min-width: 1024px) {
     position: relative;
-    /* flex-direction: row-reverse; */
+    border: none;
+
     button {
       display: none;
     }
@@ -307,34 +327,46 @@ const Menu = styled.article`
   position: fixed;
   top: 0;
   background-color: #fff;
+  border-right: 2px solid #000;
   width: 80%;
   height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
-  padding: 1rem;
+  padding: 0.75rem;
   transition: transform 0.3s ease;
   transform: translate(-100%, 0);
   font-weight: bold;
+  padding-top: 4rem;
 
   a {
     text-decoration: none;
     color: #000;
     cursor: pointer;
-  }
 
-  button {
-    padding: 0.3rem 0.3rem 0.3rem 0;
-    background-color: transparent;
-    width: 50px;
-    border: none;
-    cursor: pointer;
-
-    i {
-      font-size: 1.5rem;
-      color: #bb1616;
+    &:active {
+      border: 2px dashed #000 !important;
     }
   }
+
+  /* button {
+    padding: 0.3rem 0.3rem 0.3rem 0;
+    width: 64px;
+    height: 59px;
+    padding: 0.75rem;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    i {
+      font-size: 2.5rem;
+      color: #bb1616;
+    }
+  } */
 
   @media screen and (min-width: 1024px) {
     flex-direction: row;
@@ -343,23 +375,24 @@ const Menu = styled.article`
     width: 100%;
     transform: translate(0, 0);
     position: static;
-
-    button {
-      display: none;
-    }
+    padding-top: 1rem;
+    border: none;
   }
 `;
 
 const LinkMenu = styled.div`
   cursor: pointer;
+  padding: 0.15rem 0;
+
+  &:active {
+    border: 2px dashed #000 !important;
+  }
+
   &:hover {
     div {
       opacity: 1;
       pointer-events: auto;
     }
-  }
-
-  @media screen and (min-width: 1024px) {
   }
 `;
 
@@ -386,6 +419,13 @@ const Logo = styled.div`
   justify-content: center;
   align-items: center;
 
+  a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
   img {
     width: 8rem;
   }
@@ -394,7 +434,19 @@ const Logo = styled.div`
 const ContentListBirthday = styled.div`
   background-color: #fff;
   font-weight: normal;
-  padding: 0.5rem 0 0.5rem 1.75rem;
+  padding-left: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  &:active {
+    border: none;
+  }
+
+  div {
+    &:active {
+      border: none;
+    }
+  }
 
   @media screen and (min-width: 1024px) {
     padding: 0.75rem;

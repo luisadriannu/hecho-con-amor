@@ -8,6 +8,10 @@
   pointer-events: auto;
 }
 
+/* .active-style {
+  border: medium dashed #000 !important;
+} */
+
 /* ***** CARRUSEL ***** */
 .swiper {
   width: 100%;

@@ -355,7 +355,7 @@ const Pics = styled.div`
   margin-bottom: 12px;
 
   img {
-    border-radius: 0.75rem;
+    border: 2px solid #000;
   }
 
   @media screen and (min-width: 1024px) {

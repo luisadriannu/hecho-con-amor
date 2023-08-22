@@ -159,7 +159,8 @@ const Image = styled.div`
 
 const ContainerCardImage = styled.div`
   overflow: hidden;
-  border-radius: 0.75rem;
+  /* border-radius: 0.75rem; */
+  border: 2px solid #000;
   position: relative;
   height: 200px;
   cursor: pointer;
@@ -224,8 +225,9 @@ const TextContentImage = styled.aside`
   top: 1rem;
   left: 1rem;
   color: #fff;
+  border: 2px solid #000;
   /* text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.44); */
-  border-radius: 0.25rem;
+  /* border-radius: 0.25rem; */
   max-width: 80%;
   pointer-events: none;
 
