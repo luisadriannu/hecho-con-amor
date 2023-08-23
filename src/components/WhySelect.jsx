@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 const WhySelect = () => {
   return (
-    <MainContent className="vh-100">
+    <MainContent>
       <article className="container section">
         <motion.h2
           initial={{ opacity: 0, y: 100 }}
@@ -15,7 +15,7 @@ const WhySelect = () => {
             delay: 0.2,
           }}
           viewport={{ once: true }}
-          className="text-center"
+          className="text-center margin-titles"
         >
           ¿Porque elegirnos?
         </motion.h2>
@@ -86,8 +86,8 @@ const MainContent = styled.section`
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  display: flex;
   flex-direction: column;
+  display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -95,10 +95,16 @@ const MainContent = styled.section`
 
 const ContentWhySelect = styled.div`
   padding-top: 0.75rem;
-  @media screen and (min-width: 1024px) {
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
+  div {
+    max-width: 280px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    flex-direction: row;
     gap: 1.5rem;
   }
 `;

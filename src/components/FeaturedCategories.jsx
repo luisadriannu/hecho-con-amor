@@ -107,9 +107,10 @@ const FeaturedCategories = () => {
         ease: "easeIn",
       }}
       viewport={{ once: true }}
+      className=""
     >
       <article className="container section">
-        <h2 className="text-center">Categorías descatadas</h2>
+        <h2 className="text-center margin-titles">Categorías descatadas</h2>
         <ContentGrid>
           {data.map((item, index) => {
             return (
@@ -225,7 +226,7 @@ const TextContentImage = styled.aside`
   top: 1rem;
   left: 1rem;
   color: #fff;
-  border: 2px solid #000;
+  /* border: 2px solid #000; */
   /* text-shadow: 3px 3px 3px rgba(0, 0, 0, 0.44); */
   /* border-radius: 0.25rem; */
   max-width: 80%;

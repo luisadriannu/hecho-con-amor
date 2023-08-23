@@ -34,6 +34,7 @@ const Home = () => {
               delay: 0.5,
             }}
             viewport={{ once: true }}
+            className="margin-titles"
           >
             Nuestro facebook
           </motion.h2>

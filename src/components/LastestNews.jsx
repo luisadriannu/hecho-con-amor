@@ -78,7 +78,7 @@ const LastestNews = () => {
       className="pb-1"
     >
       <article className="section container">
-        <h2 className="text-center">Últimas novedades</h2>
+        <h2 className="text-center margin-titles">Últimas novedades</h2>
         <ContentCards>
           {data.map((item, index) => {
             return (
@@ -139,7 +139,7 @@ const Card = styled.article`
   background-size: cover;
   border: 2px solid #000;
   position: relative;
-  min-height: 412px;
+  min-height: 270px;
   cursor: pointer;
 `;
 
@@ -203,7 +203,7 @@ const ModalContent = styled.div`
     margin: 0.5rem 0;
   }
 
-  @media screen and (min-width: 1024px) {
+  @media screen and (min-width: 688px) {
     max-width: 800px;
   }
 `;
@@ -220,6 +220,10 @@ const ImageModal = styled.div`
 
 const BoxInfo = styled.div`
   padding: 1rem 0;
+
+  @media screen and (min-width: 1024px) {
+    padding: 0;
+  }
 `;
 
 const ContentFlexCard = styled.div`
@@ -228,8 +232,8 @@ const ContentFlexCard = styled.div`
   gap: 10px;
   padding: 1rem;
 
-  @media screen and (min-width: 1024px) {
-    gap: 1rem;
+  @media screen and (min-width: 688px) {
+    flex-direction: row;
 
     div {
       width: 90%;

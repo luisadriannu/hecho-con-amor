@@ -8,9 +8,9 @@
   pointer-events: auto;
 }
 
-/* .active-style {
-  border: medium dashed #000 !important;
-} */
+.align-self {
+  align-self: center;
+}
 
 /* ***** CARRUSEL ***** */
 .swiper {
@@ -48,7 +48,7 @@
 /* ***** FOOTER ***** */
 .bg-color-footer {
   background-color: #f4f4f4;
-  padding: 65px 0;
+  padding: 75px 0;
 }
 
 /* ***** Error404 ***** */

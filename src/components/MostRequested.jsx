@@ -78,7 +78,7 @@ const MostRequested = () => {
       viewport={{ once: true }}
     >
       <article className="container section">
-        <h2 className="text-center">Lo más solicitado</h2>
+        <h2 className="text-center margin-titles">Lo más solicitado</h2>
         <ContentCards>
           {data.map((item, index) => {
             return (

@@ -272,7 +272,7 @@ const BirthdayChildren = () => {
         </ul>
         <p>
           Si tienes tu propia idea tratamos de llevarla a la realidad. El modelo
-          y colores que elijas,podemos hacer cambios a tu gusto, festeja a tu
+          y colores que elijas, podemos hacer cambios a tu gusto, festeja a tu
           niño(a) de la mejor manera! Con una fiesta temática infantil!.
         </p>
         <ul>
@@ -400,9 +400,9 @@ const Modal = styled.div`
 
   img {
     width: auto;
-    max-width: 90%;
+    max-width: 100%;
     height: auto;
-    max-height: 90%;
+    max-height: 100%;
     display: block;
     line-height: 0;
     box-sizing: border-box;

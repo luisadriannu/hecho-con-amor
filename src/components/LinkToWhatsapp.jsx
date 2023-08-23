@@ -32,8 +32,8 @@ const LinkToWhatsapp = () => {
 };
 
 const LinkWhatsapp = styled.div`
-  width: 60px;
-  height: 60px;
+  width: 50px;
+  height: 50px;
   z-index: 996;
   position: fixed;
   bottom: 1rem;

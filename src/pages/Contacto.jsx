@@ -139,6 +139,7 @@ const Contacto = () => {
                 type="text"
                 name="name"
                 id="name"
+                placeholder="Alison Love"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={form.name}
@@ -151,6 +152,7 @@ const Contacto = () => {
                 type="email"
                 name="email"
                 id="email"
+                placeholder="email@example.com"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={form.email}
@@ -163,6 +165,7 @@ const Contacto = () => {
                 type="text"
                 name="phone"
                 id="phone"
+                placeholder="767-162-6546"
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={form.phone}
@@ -174,6 +177,7 @@ const Contacto = () => {
               <textarea
                 name="comments"
                 id="comments"
+                placeholder="¿Qué te gustaría decir?"
                 cols="30"
                 rows="10"
                 onBlur={handleBlur}
@@ -226,8 +230,8 @@ const ContactForm = styled.div`
   input[type="text"],
   input[type="email"],
   textarea {
-    border: thin solid rgba(71, 71, 71, 0.224);
-    border-radius: 0.25rem;
+    border: 2px solid #000;
+    /* border-radius: 0.25rem; */
     padding: 0.75rem;
     margin-bottom: 1rem;
     outline: none;
@@ -237,6 +241,7 @@ const ContactForm = styled.div`
     line-height: 1;
     background-color: transparent;
     resize: none;
+    font-size: inherit;
   }
 
   button,
@@ -244,8 +249,8 @@ const ContactForm = styled.div`
   input[type="reset"] {
     display: block;
     width: 100%;
-    border: none;
-    border-radius: 0.25rem;
+    border: 2px solid #000;
+    /* border-radius: 0.25rem; */
     padding: 1rem 1rem;
     margin: 0 0.5rem 0 0;
     display: inline-block;
